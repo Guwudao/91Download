@@ -47,7 +47,6 @@ class MyThread_Download_91(threading.Thread):
                     f.write(r.content)
                 fragment = fragment + 1
             else:
-                print("下载异常：" + threading.current_thread().name + f" — {self.dir_name} — " + url)
                 break
 
         print("-" * 50)
@@ -63,9 +62,9 @@ if __name__ == "__main__":
     s = requests.session()
     s.keep_alive = False
 
-    page_url = "http://91porn.com/v.php?next=watch"
-    numbers, dir_names = [580592], ["你们要的露脸"]
-    # numbers, dir_names = PageDataFetcher.get_page_data(page_url)
+    page_url = "http://91porn.com/uvideos.php?UID=33f6MjZaGNGlacnlradalTtcX8NaBE43EdlA00jcfhAIZzLe&type=public&page=6"
+    # numbers, dir_names = [580592], ["你们要的露脸"]
+    numbers, dir_names = PageDataFetcher.get_page_data(page_url)
 
     for number, dir_name in zip(numbers, dir_names):
         t = MyThread_Download_91(str(number), client_src, dir_name)

@@ -34,7 +34,7 @@ def get_page_data(page_url):
             src_number = src.split("/")[-1].split(".")[0]
             number_list.append(src_number)
             # 文件名
-            dir_name = re.sub("[\[\]，+=。！、/？“”（）()原创~.～\s]+", "", name)
+            dir_name = re.sub("[\[\]，+=：:。！、/？“”（）()原创~.～\s]+", "", name)
             dir_names.append(dir_name)
 
             print(str(index) + " - " + dir_name + " - " + src_number + " - "  + time)

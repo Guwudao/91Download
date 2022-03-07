@@ -29,11 +29,11 @@ class MyThread_Download_91(threading.Thread):
             return False
 
     def run(self):
-        base_dir = "https://cdn77.91p49.com//m3u8/"
+        base_dir = "https://la.killcovid2021.com/m3u8/"
         # base_dir = "https://ccn.killcovid2021.com//m3u8/"
         fragment = 0
         while True:
-            url = base_dir+self.src+"//"+self.src+str(fragment)+".ts"
+            url = base_dir+self.src+"/"+self.src+str(fragment)+".ts"
 
             print(threading.current_thread().name + f" — {self.dir_name} — " + url)
             r = requests.get(url, headers=headers)
@@ -43,6 +43,11 @@ class MyThread_Download_91(threading.Thread):
                 file_name = ts_src + "//" + str(fragment).rjust(10, "0") + ".ts"
                 with open(file_name, "wb") as f:
                     f.write(r.content)
+
+                # file_name = ts_src + "/" + dir_name + ".mp4"
+                # print(threading.current_thread().name + " " + file_name)
+                # with open(file_name, "ab+") as f:
+                #     f.write(r.content)
                 fragment = fragment + 1
             else:
                 break
@@ -60,8 +65,8 @@ if __name__ == "__main__":
     s = requests.session()
     s.keep_alive = False
 
-    page_url = "http://91porn.com/v.php?category=hot&viewtype=basic&page=3"
-    # numbers, dir_names = [581056], [""]
+    page_url = "http://91porn.com/v.php?category=top&viewtype=basic&page=2"
+    # numbers, dir_names = [601164, 601053], ["大鸟十八玲酱回归撸先生日本街边豪车搭讪千金mp4", "《探总奉上》贵在真实"]
     numbers, dir_names = PageDataFetcher.get_page_data(page_url)
 
     for number, dir_name in zip(numbers, dir_names):
